@@ -2,7 +2,7 @@ package christmas.model.orderCondition
 
 import christmas.model.order.Menu
 
-class MenuCountCondition(private val orderMenus: Map<Menu, Int>) : MenuCondition(orderMenus) {
+class MenuCountCondition(private val orderMenus: Map<Menu, Int>) : OrderCondition(orderMenus) {
     override val isSatisfy: Boolean = isOverMinCnt() && isUnderMaxCnt()
 
     init {

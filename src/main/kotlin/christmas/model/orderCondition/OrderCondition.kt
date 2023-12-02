@@ -2,7 +2,7 @@ package christmas.model.orderCondition
 
 import christmas.model.order.Menu
 
-abstract class MenuCondition(private val orderMenus: Map<Menu, Int>) {
+abstract class OrderCondition(private val orderMenus: Map<Menu, Int>) {
     abstract val isSatisfy: Boolean
 
     companion object {

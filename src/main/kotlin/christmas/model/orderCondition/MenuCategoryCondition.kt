@@ -3,7 +3,7 @@ package christmas.model.orderCondition
 import christmas.model.order.Menu
 import christmas.model.order.MenuCategory
 
-class MenuCategoryCondition(private val orderMenus: Map<Menu, Int>) : MenuCondition(orderMenus) {
+class MenuCategoryCondition(private val orderMenus: Map<Menu, Int>) : OrderCondition(orderMenus) {
     override val isSatisfy: Boolean = isNotOnlyDrink()
 
     init {
