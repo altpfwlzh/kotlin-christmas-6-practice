@@ -1,5 +1,15 @@
 package christmas
 
+import christmas.controller.MainController
+import christmas.misc.ExceptionHandler
+import christmas.view.InputView
+import christmas.view.OutputView
+
 fun main() {
-    TODO("프로그램구현")
+    runCatching {
+        val mainController = MainController(InputView(), OutputView(), ExceptionHandler())
+        mainController.run()
+    }.onFailure {
+        ExceptionHandler().printError(it.message)
+    }
 }
