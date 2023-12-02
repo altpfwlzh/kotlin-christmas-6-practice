@@ -13,18 +13,24 @@ class MainController(
     fun run() {
         printHello()
 
-        exceptionHandler.inputUntilSuccess { receiveVisitDate() }
+        val visitDate: Int = exceptionHandler.inputUntilSuccess { receiveVisitDate() }
+        exceptionHandler.inputUntilSuccess { receiveOrder() }
+        printEventPreview(visitDate)
+
     }
 
     private fun printHello() = outputView.hello()
 
-    private fun receiveVisitDate() {
+    private fun receiveVisitDate(): Int {
         outputView.visitDate()
-        inputView.inputVisitDate()
+        return (inputView.inputVisitDate())
     }
 
+    private fun printEventPreview(date: Int) = outputView.eventPreview(date)
+
     private fun receiveOrder() {
-        //String 입력
+        outputView.order()
+        inputView.inputString()
     }
 
 }

@@ -15,7 +15,7 @@ class OutputView() {
 
     fun visitDate() = println(strings.OUTPUT_VISIT_DATE.format(curMonth))
 
-    fun eventPreview() = println(strings.OUTPUT_EVENT_PREVIEW)
+    fun eventPreview(date: Int) = println(strings.OUTPUT_EVENT_PREVIEW.format(curMonth, date))
 
     fun order() = println(strings.OUTPUT_ORDER)
 
@@ -32,4 +32,6 @@ class OutputView() {
     fun totalAmountAfterDiscount() = println(strings.OUTPUT_TOTAL_AMOUNT_AFTER_DISCOUNT)
 
     fun badgeDetail() = println(strings.OUTPUT_BADGE_DETAIL)
+
+    fun blankLine() = println()
 }

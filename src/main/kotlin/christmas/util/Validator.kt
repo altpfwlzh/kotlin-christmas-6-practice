@@ -17,14 +17,14 @@ class Validator {
     }
 
     fun checkVisitDate(input: String) {
-        require(isEmpty(input) && isTypeInt(input) && isValidDate(input.toInt())) {
+        require(isNotEmpty(input) && isTypeInt(input) && isValidDate(input.toInt())) {
             throw IllegalArgumentException(
                 errorMessage.INVALID_DATE
             )
         }
     }
 
-    private fun isEmpty(input: String): Boolean = input.isEmpty()
+    private fun isNotEmpty(input: String): Boolean = input.isNotEmpty()
 
     private fun isTypeInt(input: String): Boolean = input.chars().allMatch { Character.isDigit(it) }
 
