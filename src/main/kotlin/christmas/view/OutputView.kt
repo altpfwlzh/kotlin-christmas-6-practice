@@ -2,14 +2,18 @@ package christmas.view
 
 import christmas.constants.ErrorMessage
 import christmas.constants.Strings
+import java.time.LocalDate
+import java.util.Locale
 
 class OutputView() {
     private val strings: Strings = Strings
     private val errorMessage: ErrorMessage = ErrorMessage
 
-    fun hello() = println(strings.OUTPUT_HELLO)
+    private val curMonth: Int = LocalDate.now().month.value
 
-    fun visitDate() = println(strings.OUTPUT_VISIT_DATE)
+    fun hello() = println(strings.OUTPUT_HELLO.format(curMonth))
+
+    fun visitDate() = println(strings.OUTPUT_VISIT_DATE.format(curMonth))
 
     fun eventPreview() = println(strings.OUTPUT_EVENT_PREVIEW)
 

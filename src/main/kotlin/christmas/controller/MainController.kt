@@ -11,7 +11,20 @@ class MainController(
 ) {
 
     fun run() {
+        printHello()
 
+        exceptionHandler.inputUntilSuccess { receiveVisitDate() }
+    }
+
+    private fun printHello() = outputView.hello()
+
+    private fun receiveVisitDate() {
+        outputView.visitDate()
+        inputView.inputVisitDate()
+    }
+
+    private fun receiveOrder() {
+        //String 입력
     }
 
 }
