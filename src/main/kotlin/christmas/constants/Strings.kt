@@ -14,7 +14,4 @@ object Strings {
     const val OUTPUT_TOTAL_BENEFIT_AMOUNT = "<총혜택 금액>"
     const val OUTPUT_TOTAL_PRICE_AFTER_DISCOUNT = "<할인 후 예상 결제 금액>"
     const val OUTPUT_EVENT_BADGE = "<%d월 이벤트 배지>"
-
-    const val INVALID_DATE = "유효하지 않은 날짜입니다. "
-    const val INVALID_ORDER_MENUS = "유효하지 않은 주문입니다. "
 }

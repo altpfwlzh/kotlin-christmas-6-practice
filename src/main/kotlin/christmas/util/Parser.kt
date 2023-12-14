@@ -1,6 +1,6 @@
 package christmas.util
 
-import christmas.constants.Strings
+import christmas.constants.ErrorMessage
 import christmas.model.order.Menu
 import java.text.DecimalFormat
 import kotlin.math.pow
@@ -14,7 +14,7 @@ class Parser {
             val menu: String = it.substringBefore("-").replace(" ", "")
             val count: String = it.substringAfter("-").replace(" ", "")
 
-            InputValidator().checkOrderMenusDetail(menu, count, Strings.INVALID_ORDER_MENUS)
+            InputValidator().checkOrderMenusDetail(menu, count, ErrorMessage.INVALID_ORDER_MENUS)
 
             menus[Menu.valueOf(string = menu)] = count.toInt()
         }

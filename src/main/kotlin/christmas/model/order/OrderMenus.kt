@@ -1,9 +1,16 @@
 package christmas.model.order
 
+import christmas.constants.ErrorMessage
+import christmas.model.orderCondition.MenuCategoryCondition
+import christmas.model.orderCondition.MenuCondition
+import christmas.model.orderCondition.MenuCountCondition
+
 class OrderMenus(private val menus: Map<Menu, Int> ) {
+    private val conditions: List<MenuCondition> = listOf(MenuCountCondition(menus), MenuCategoryCondition(menus))
 
     init {
-        require(!isExistMenu()) {throw IllegalArgumentException(INVALID_MENU)}
+        require(!isExistMenu()) {throw IllegalArgumentException(ErrorMessage.INVALID_ORDER_MENUS + INVALID_MENU)}
+        require(conditions.all { it.isSatisfy }) {throw IllegalArgumentException(ErrorMessage.INVALID_ORDER_MENUS)}
     }
 
     private fun isExistMenu() = menus.contains(Menu.NONE)

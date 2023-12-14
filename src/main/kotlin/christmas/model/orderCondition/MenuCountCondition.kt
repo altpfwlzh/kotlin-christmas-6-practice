@@ -1,13 +1,13 @@
 package christmas.model.orderCondition
 
-import christmas.constants.Strings
+import christmas.constants.ErrorMessage
 import christmas.model.order.Menu
 
 class MenuCountCondition(override val menus: Map<Menu, Int>) : MenuCondition(menus) {
     override val isSatisfy: Boolean = isMenuCountInRange()
 
     init {
-        require(isMenuCountInRange()) {throw (IllegalArgumentException(Strings.INVALID_ORDER_MENUS + OUT_OF_RANGE))}
+        require(isMenuCountInRange()) {throw (IllegalArgumentException(ErrorMessage.INVALID_ORDER_MENUS + OUT_OF_RANGE))}
     }
 
     private fun isMenuCountInRange() = calculateMenuCount() in MIN_CNT..MAX_CNT

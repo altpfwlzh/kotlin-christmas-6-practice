@@ -1,6 +1,6 @@
 package christmas.model.orderCondition
 
-import christmas.constants.Strings
+import christmas.constants.ErrorMessage
 import christmas.model.order.Menu
 import christmas.model.order.MenuCategory
 
@@ -8,7 +8,7 @@ class MenuCategoryCondition(override val menus: Map<Menu, Int>) : MenuCondition(
     override val isSatisfy: Boolean = isNotOnlyDrinks()
 
     init {
-        require(isNotOnlyDrinks()) {throw IllegalArgumentException(Strings.INVALID_ORDER_MENUS + ONLY_DRINK_NOT_ALLOW)}
+        require(isNotOnlyDrinks()) {throw IllegalArgumentException(ErrorMessage.INVALID_ORDER_MENUS + ONLY_DRINK_NOT_ALLOW)}
     }
 
     private fun isNotOnlyDrinks(): Boolean {
