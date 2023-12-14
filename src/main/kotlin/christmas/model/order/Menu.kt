@@ -9,6 +9,9 @@ enum class MenuCategory(val string: String) {
 }
 
 enum class Menu(val menuCategory: MenuCategory, val string: String, val price: Int) {
+    //DEFAULT
+    DEFAULT(MenuCategory.DEFAULT, "없음", 0),
+
     // Appetizer
     MUSHROOM_SOUP(MenuCategory.APPETIZER, "양송이수프", 6_000),
     TAPAS(MenuCategory.APPETIZER, "타파스", 5_500),

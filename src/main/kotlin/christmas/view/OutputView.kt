@@ -14,9 +14,9 @@ class OutputView() {
 
     fun outputReceiveVisitDate() = println(strings.OUTPUT_RECEIVE_VISIT_DATE.format(currentMonth))
 
-    fun outputPreviewEventInfo() = println(strings.OUTPUT_PREVIEW_EVENT_INFO.format(currentMonth))
+    fun outputReceiveOrderMenus() = println(strings.OUTPUT_RECEIVE_ORDER_MENUS)
 
-    fun outputReceiveOrderMenus() = println(strings.OUTPUT_RECEIVE_ORDER_MENUS.format(currentMonth))
+    fun outputPreviewEventInfo() = println(strings.OUTPUT_PREVIEW_EVENT_INFO.format(currentMonth))
 
     fun outputOrderMenus() = println(strings.OUTPUT_ORDER_MENUS)
 

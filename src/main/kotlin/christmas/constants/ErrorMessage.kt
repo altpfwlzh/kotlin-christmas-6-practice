@@ -7,5 +7,5 @@ object ErrorMessage {
     const val INPUT_AGAIN = "다시 입력해 주세요."
     const val INPUT_EMPTY = "아무 것도 입력되지 않았습니다."
     const val INPUT_TYPE_NOT_INT = "숫자로만 입력해야 합니다."
-    const val INPUT_PATTERN_INVALID = "입력 형식은 _여야 합니다."
+    const val INPUT_ORDER_MENUS_PATTERN_INVALID = "메뉴 입력 형식이 잘못 되었습니다."
 }
