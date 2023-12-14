@@ -16,7 +16,7 @@ class OutputView() {
 
     fun outputReceiveOrderMenus() = println(strings.OUTPUT_RECEIVE_ORDER_MENUS)
 
-    fun outputPreviewEventInfo() = println(strings.OUTPUT_PREVIEW_EVENT_INFO.format(currentMonth))
+    fun outputPreviewEventInfo(visitDate: Int) = println(strings.OUTPUT_PREVIEW_EVENT_INFO.format(currentMonth, visitDate))
 
     fun outputOrderMenus() = println(strings.OUTPUT_ORDER_MENUS)
 
