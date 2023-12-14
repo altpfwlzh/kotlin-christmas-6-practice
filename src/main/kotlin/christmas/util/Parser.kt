@@ -12,9 +12,10 @@ class Parser {
         val menus:MutableMap<Menu, Int> = mutableMapOf()
 
         input.split(",").map {
-            val menu: String = it.substringBefore("-")
-            val count: String = input.substringAfter("-")
-            InputValidator().checkOrderMenusDetail(it.substringBefore("-"), input.substringAfter("-"), Strings.INVALID_ORDER_MENUS)
+            val menu: String = it.substringBefore("-").replace(" ", "")
+            val count: String = it.substringAfter("-").replace(" ", "")
+
+            InputValidator().checkOrderMenusDetail(menu, count, Strings.INVALID_ORDER_MENUS)
 
             menus[Menu.valueOf(string = menu)] = count.toInt()
         }

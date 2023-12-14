@@ -28,7 +28,7 @@ enum class Menu(val menuCategory: MenuCategory, val string: String, val price: I
     ICE_CREAM(MenuCategory.DESSERT, "아이스크림", 5_000),
 
     // Drink
-    ZERO_COLA(MenuCategory.DRINK, "제로콜라", 3_000),
+    ZERO_COKE(MenuCategory.DRINK, "제로콜라", 3_000),
     RED_WINE(MenuCategory.DRINK, "레드와인", 60_000),
     CHAMPAGNE(MenuCategory.DRINK, "샴페인", 25_000)
     ;
