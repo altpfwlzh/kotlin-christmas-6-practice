@@ -10,7 +10,7 @@ class OutputView() {
 
     private val currentMonth: Int =  LocalDate.now().month.value
 
-    fun outputHello() = println(strings.OUTPUT_HELLO)
+    fun outputHello() = println(strings.OUTPUT_HELLO.format(currentMonth))
 
     fun outputReceiveVisitDate() = println(strings.OUTPUT_RECEIVE_VISIT_DATE.format(currentMonth))
 
@@ -18,7 +18,13 @@ class OutputView() {
 
     fun outputPreviewEventInfo(visitDate: Int) = println(strings.OUTPUT_PREVIEW_EVENT_INFO.format(currentMonth, visitDate))
 
-    fun outputOrderMenus() = println(strings.OUTPUT_ORDER_MENUS)
+    fun outputOrderMenus(menusDetail: Map<String, Int>) {
+        outputBlankLine()
+        println(strings.OUTPUT_ORDER_MENUS)
+        menusDetail.map {
+            println("${it.key} ${it.value}개")
+        }
+    }
 
     fun outputTotalPriceBeforeDiscount() = println(strings.OUTPUT_TOTAL_PRICE_BEFORE_DISCOUNT)
 
