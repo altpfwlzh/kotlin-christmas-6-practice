@@ -11,7 +11,7 @@ enum class EventCategory(val string: String) {
     REWARD("리워드")
 }
 
-abstract class Event(open val visitDate: VisitDate, open val menus: Map<Menu, Int>) {
+abstract class Event(val visitDate: VisitDate, val menus: Map<Menu, Int>) {
     open val eventCategory: EventCategory = EventCategory.DEFAULT
     open val eventName: String = EVENT_NAME
     open val essentialConditions: List<EventCondition> = listOf()

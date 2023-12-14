@@ -4,7 +4,7 @@ import christmas.constants.ErrorMessage
 import christmas.model.order.Menu
 import christmas.model.order.MenuCategory
 
-class MenuCategoryCondition(override val menus: Map<Menu, Int>) : MenuCondition(menus) {
+class MenuCategoryCondition(menus: Map<Menu, Int>) : MenuCondition(menus) {
     override val isSatisfy: Boolean = isNotOnlyDrinks()
 
     init {

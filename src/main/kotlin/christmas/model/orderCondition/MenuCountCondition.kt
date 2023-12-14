@@ -3,7 +3,7 @@ package christmas.model.orderCondition
 import christmas.constants.ErrorMessage
 import christmas.model.order.Menu
 
-class MenuCountCondition(override val menus: Map<Menu, Int>) : MenuCondition(menus) {
+class MenuCountCondition(menus: Map<Menu, Int>) : MenuCondition(menus) {
     override val isSatisfy: Boolean = isMenuCountInRange()
 
     init {

@@ -5,7 +5,7 @@ import christmas.model.order.OrderMenus
 import christmas.model.order.VisitDate
 
 class EventConditionPrice(
-    override val visitDate: VisitDate, override val menus: OrderMenus,
+    visitDate: VisitDate, menus: OrderMenus,
     private val menuCategory: MenuCategory? = null, private val price: Int
 ) : EventCondition(visitDate, menus) {
     override val isSatisfy: Boolean = isMorePrice()
