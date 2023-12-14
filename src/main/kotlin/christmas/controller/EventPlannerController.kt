@@ -5,6 +5,7 @@ import christmas.model.order.OrderMenus
 import christmas.model.order.VisitDate
 import christmas.view.InputView
 import christmas.view.OutputView
+import christmas.util.Parser
 
 class EventPlannerController(
     private val inputView: InputView,
@@ -31,6 +32,6 @@ class EventPlannerController(
 
     private fun receiveOrderMenus(): OrderMenus {
         outputView.outputReceiveOrderMenus()
-        return OrderMenus(inputView.inputOrderMenus())
+        return OrderMenus(Parser().stringToOrderMenus(inputView.inputOrderMenus()))
     }
 }

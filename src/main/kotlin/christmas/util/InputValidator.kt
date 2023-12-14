@@ -12,7 +12,12 @@ class InputValidator {
 
     fun checkOrderMenus(input: String, error: String = "") {
         checkEmpty(input, error)
-        checkContainSeparator(input, error)
+        checkOrderMenusForm(input, error)
+    }
+
+    fun checkOrderMenusDetail(menu: String, count: String, error: String = "") {
+        checkEmpty(menu, error + "메뉴는 ")
+        checkInt(count, error + "메뉴 개수는 ")
     }
 
     private fun checkEmpty(input: String, error: String) {
@@ -25,7 +30,7 @@ class InputValidator {
         }
     }
 
-    private fun checkContainSeparator(input: String, error: String) {
+    private fun checkOrderMenusForm(input: String, error: String) {
         require(input.contains("-") && input.count { it == '-' } >= input.count { it == ',' }) {
             throw IllegalArgumentException(error + errorMessage.INPUT_ORDER_MENUS_PATTERN_INVALID)
         }

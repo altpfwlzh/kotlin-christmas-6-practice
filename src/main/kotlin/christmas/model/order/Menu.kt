@@ -1,7 +1,7 @@
 package christmas.model.order
 
 enum class MenuCategory(val string: String) {
-    DEFAULT("없음"),
+    NONE("없음"),
     APPETIZER("애피타이저"),
     MAIN("메인"),
     DESSERT("디저트"),
@@ -10,7 +10,7 @@ enum class MenuCategory(val string: String) {
 
 enum class Menu(val menuCategory: MenuCategory, val string: String, val price: Int) {
     //DEFAULT
-    DEFAULT(MenuCategory.DEFAULT, "없음", 0),
+    NONE(MenuCategory.NONE, "없음", 0),
 
     // Appetizer
     MUSHROOM_SOUP(MenuCategory.APPETIZER, "양송이수프", 6_000),
@@ -34,8 +34,8 @@ enum class Menu(val menuCategory: MenuCategory, val string: String, val price: I
     ;
 
     companion object {
-        fun valueOf(string: String): Menu? {
-            return Menu.values().associateBy(Menu::string)[string]
+        fun valueOf(string: String): Menu {
+            return Menu.values().associateBy(Menu::string)[string] ?: NONE
         }
     }
 }
