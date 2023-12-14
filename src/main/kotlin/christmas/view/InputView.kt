@@ -20,7 +20,7 @@ class InputView {
 
     fun inputVisitDate(): Int {
         val input: String = Console.readLine().trim()
-        validator.checkVisitDate(input, INVALID_DATE)
+        validator.checkInt(input, INVALID_DATE)
         return input.toInt()
     }
 

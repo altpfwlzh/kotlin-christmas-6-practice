@@ -18,11 +18,6 @@ class InputValidator {
         checkTypeInt(input, error)
     }
 
-    fun checkVisitDate(input: String, error: String = "") {
-        checkInt(input, error)
-        checkValidDate(input.toInt(), error = error)
-    }
-
     private fun checkEmpty(input: String, error: String) {
         require(input.isNotEmpty()) { throw IllegalArgumentException(error + errorMessage.INPUT_EMPTY) }
     }
@@ -37,18 +32,5 @@ class InputValidator {
         val pattern: Pattern = Pattern.compile("^\\d{3}-\\d{3,4}-\\d{4}$")
         val matcher: Matcher = pattern.matcher(input)
         require(matcher.find()) {throw IllegalArgumentException(error + errorMessage.INPUT_PATTERN_INVALID)}
-    }
-
-    private fun checkValidDate(
-        date: Int, month: Int = LocalDate.now().month.value, year: Int = LocalDate.now().year,
-        error: String
-    ) {
-        runCatching {
-            val dateFormat = SimpleDateFormat("yyyy-MM-dd")
-            dateFormat.isLenient = false
-            dateFormat.parse("${year}-${month}-${date}")
-        }.getOrElse {
-            throw IllegalArgumentException(error)
-        }
     }
 }
