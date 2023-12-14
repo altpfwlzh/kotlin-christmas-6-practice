@@ -19,14 +19,6 @@ class VisitDate(
         require(isValidateDate(date, month, year)) { throw IllegalArgumentException(INVALID_DATE) }
     }
 
-    fun isBefore(targetDate: LocalDate, endDate: LocalDate): Boolean {
-        return targetDate.isBefore(endDate.plusDays(1))
-    }
-
-    fun isAfter(targetDate: LocalDate, startDate: LocalDate): Boolean {
-        return targetDate.isAfter(startDate.minusDays(1))
-    }
-
     fun isWithinPeriod(targetDate: LocalDate, startDate: LocalDate, endDate: LocalDate): Boolean {
         return targetDate.isAfter(startDate.minusDays(1)) && targetDate.isBefore(endDate.plusDays(1))
     }
