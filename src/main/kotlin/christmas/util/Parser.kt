@@ -1,6 +1,5 @@
 package christmas.util
 
-import christmas.constants.ErrorMessage
 import christmas.constants.Strings
 import christmas.model.order.Menu
 import java.text.DecimalFormat
@@ -22,12 +21,12 @@ class Parser {
         return menus
     }
 
-    fun intToCashString(num: Long): String {
+    fun longToCashString(num: Long): String {
         val dec = DecimalFormat("#,###원")
         return dec.format(num)
     }
 
-    fun intToMinusCashString(num: Long): String {
+    fun longToMinusCashString(num: Long): String {
         val dec = DecimalFormat("-#,###원")
         return dec.format(num)
     }

@@ -17,6 +17,26 @@ class OrderMenus(private val menus: Map<Menu, Int> ) {
         return menusDetail
     }
 
+    fun calculateTotalPrice(): Int {
+        var totalPrice: Int = 0
+
+        menus.map {
+            totalPrice += (it.key.price * it.value)
+        }
+        return totalPrice
+    }
+
+    fun calculateTotalPrice(menuCategory: MenuCategory): Int {
+        var totalPrice: Int = 0
+
+        menus.filter {
+            it.key.menuCategory == menuCategory
+        }.map {
+            totalPrice += (it.key.price * it.value)
+        }
+        return totalPrice
+    }
+
     companion object {
         const val INVALID_MENU = "메뉴판에 없는 메뉴를 입력했습니다."
     }

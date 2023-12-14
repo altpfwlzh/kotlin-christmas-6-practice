@@ -3,6 +3,8 @@ package christmas.view
 import christmas.constants.ErrorMessage
 import christmas.constants.Strings
 import java.time.LocalDate
+import christmas.util.Parser
+
 
 class OutputView() {
     private val strings: Strings = Strings
@@ -26,7 +28,11 @@ class OutputView() {
         }
     }
 
-    fun outputTotalPriceBeforeDiscount() = println(strings.OUTPUT_TOTAL_PRICE_BEFORE_DISCOUNT)
+    fun outputTotalPriceBeforeDiscount(price: Int) {
+        outputBlankLine()
+        println(strings.OUTPUT_TOTAL_PRICE_BEFORE_DISCOUNT)
+        println(Parser().longToCashString(price.toLong()))
+    }
 
     fun outputGiftMenu() = println(strings.OUTPUT_GIFT_MENU)
 

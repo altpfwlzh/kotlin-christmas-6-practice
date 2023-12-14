@@ -2,6 +2,7 @@ package christmas
 
 import christmas.model.order.Menu
 import christmas.model.order.OrderMenus
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -18,5 +19,12 @@ class OrderMenusTest {
         val menus = mapOf(Menu.T_BONE_STEAK to 1, Menu.BBQ_RIB to 1, Menu.CHOCO_CAKE to 2, Menu.ZERO_COKE to 1)
         val result = OrderMenus(menus).getMenusKeyToString()
         println(result)
+    }
+
+    @Test
+    fun `주문한 메뉴들의 총금액을 올바르게 출력한다`() {
+        val menus = mapOf(Menu.T_BONE_STEAK to 1, Menu.BBQ_RIB to 1, Menu.CHOCO_CAKE to 2, Menu.ZERO_COKE to 1)
+        val result = OrderMenus(menus).calculateTotalPrice()
+        Assertions.assertEquals(142_000, result)
     }
 }
