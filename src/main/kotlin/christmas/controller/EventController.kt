@@ -7,6 +7,7 @@ import christmas.model.event.DiscountEventWeekday
 import christmas.model.event.DiscountEventWeekend
 import christmas.model.event.GiftEvent
 import christmas.model.event.GiftEventChampagne
+import christmas.model.event.Reward
 import christmas.model.event.RewardEvent
 import christmas.model.event.RewardEventBadge
 import christmas.model.order.Menu
@@ -15,16 +16,17 @@ import christmas.model.order.VisitDate
 
 class EventController(visitDate: VisitDate, menus: OrderMenus) {
     private val giftEvents: List<GiftEvent> = listOf(GiftEventChampagne(visitDate, menus))
+    private val satisfyGiftEvents: List<GiftEvent> = calculateSatisfyGiftEvent()
+
     private val discountEvents: List<DiscountEvent> = listOf(
         DiscountEventChristmasDDay(visitDate, menus),
         DiscountEventSpecialStar(visitDate, menus),
         DiscountEventWeekday(visitDate, menus),
         DiscountEventWeekend(visitDate, menus)
     )
-    private val rewardEvents: List<RewardEvent> = listOf(RewardEventBadge(visitDate, menus, 0))
-
-    private val satisfyGiftEvents: List<GiftEvent> = calculateSatisfyGiftEvent()
     private val satisfyDiscountEvents: List<DiscountEvent> = calculateSatisfyDiscountEvent()
+
+    private val rewardEvents: List<RewardEvent> = listOf(RewardEventBadge(visitDate, menus, calculateTotalBenefitAmount()))
     private val satisfyRewardEvents: List<RewardEvent> = calculateSatisfyRewardEvent()
 
     private fun calculateSatisfyGiftEvent(): List<GiftEvent> = giftEvents.filter { it.isSatisfy }
@@ -58,6 +60,10 @@ class EventController(visitDate: VisitDate, menus: OrderMenus) {
         return giftDetails
     }
 
+    fun calculateTotalBenefitAmount(): Int {
+        return calculateTotalDiscountAmount() + calculateTotalGiftAmount()
+    }
+
     fun calculateTotalDiscountAmount(): Int {
         var totalDiscountAmount: Int = 0
         satisfyDiscountEvents.map {
@@ -67,7 +73,16 @@ class EventController(visitDate: VisitDate, menus: OrderMenus) {
         return totalDiscountAmount
     }
 
-    fun calculateTotalGiftAmount(): Int {
+    fun calculateRewardBadge(): Map<Reward, Int> {
+        val rewardDetail: MutableMap<Reward, Int> = mutableMapOf()
+        satisfyRewardEvents.map {
+            rewardDetail += it.rewardEnumAndCount
+        }
+
+        return rewardDetail
+    }
+
+    private fun calculateTotalGiftAmount(): Int {
         var totalDiscountAmount: Int = 0
         satisfyGiftEvents.map {
             totalDiscountAmount += it.giftMenuAndCount.keys.first().price
@@ -75,5 +90,4 @@ class EventController(visitDate: VisitDate, menus: OrderMenus) {
 
         return totalDiscountAmount
     }
-
 }

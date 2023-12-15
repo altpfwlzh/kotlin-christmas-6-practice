@@ -8,7 +8,7 @@ enum class RewardCategory {
     Badge
 }
 
-enum class Reward(val rewardCategory: RewardCategory, string: String) {
+enum class Reward(val rewardCategory: RewardCategory, val string: String) {
     //None
     None(RewardCategory.None, "없음"),
 

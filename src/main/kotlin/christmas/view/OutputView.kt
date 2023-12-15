@@ -2,6 +2,7 @@ package christmas.view
 
 import christmas.constants.ErrorMessage
 import christmas.constants.Strings
+import christmas.model.event.Reward
 import christmas.model.order.Menu
 import java.time.LocalDate
 import christmas.util.Parser
@@ -49,19 +50,18 @@ class OutputView() {
         println(strings.OUTPUT_BENEFIT_DETAIL)
 
         val benefitDetails: Map<String, Int> = discountDetails + giftDetails
-        if(benefitDetails.isEmpty()) return println(strings.OUTPUT_NONE)
+        if(benefitDetails.filter { it.value != 0 }.isEmpty()) return println(strings.OUTPUT_NONE)
         benefitDetails.map {
             println("${it.key}: ${Parser().longToMinusCashString(it.value.toLong())}")
         }
     }
 
-    fun outputTotalBenefitAmount(discountAmount: Int, giftAmount: Int) {
+    fun outputTotalBenefitAmount(benefitAmount: Int) {
         outputBlankLine()
         println(strings.OUTPUT_TOTAL_BENEFIT_AMOUNT)
 
-        val totalAmount: Int = discountAmount + giftAmount
-        if(totalAmount == 0) return println("${strings.OUTPUT_ZERO}${strings.OUTPUT_PRICE_UNIT}")
-        println(Parser().longToMinusCashString(totalAmount.toLong()))
+        if(benefitAmount == 0) return println("${strings.OUTPUT_ZERO}${strings.OUTPUT_PRICE_UNIT}")
+        println(Parser().longToMinusCashString(benefitAmount.toLong()))
     }
 
     fun outputTotalPriceAfterDiscount(totalPrice: Int, discountPrice: Int) {
@@ -73,7 +73,15 @@ class OutputView() {
 
     }
 
-    fun outputEventBadge() = println(strings.OUTPUT_EVENT_BADGE)
+    fun outputEventBadge(rewardDetails: Map<Reward, Int>) {
+        outputBlankLine()
+        println(strings.OUTPUT_EVENT_BADGE.format(currentMonth))
+
+        if(rewardDetails.isEmpty()) return println(strings.OUTPUT_NONE)
+        rewardDetails.map {
+            println(it.key.string)
+        }
+    }
 
     private fun outputBlankLine() = println()
 }
