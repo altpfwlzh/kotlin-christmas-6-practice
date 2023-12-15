@@ -64,9 +64,12 @@ class OutputView() {
         println(Parser().longToMinusCashString(totalAmount.toLong()))
     }
 
-    fun outputTotalPriceAfterDiscount() {
+    fun outputTotalPriceAfterDiscount(totalPrice: Int, discountPrice: Int) {
         outputBlankLine()
         println(strings.OUTPUT_TOTAL_PRICE_AFTER_DISCOUNT)
+
+        val totalPriceAfterDiscount: Int = totalPrice - discountPrice
+        println(Parser().longToCashString(totalPriceAfterDiscount.toLong()))
 
     }
 

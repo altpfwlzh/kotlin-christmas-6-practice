@@ -50,6 +50,7 @@ class EventPlannerController(
         outputView.outputGiftMenu(eventController.calculateGiftMenuAndCount())
         outputView.outputBenefitDetail(eventController.calculateDiscountEventNameAndDiscountAmount(), eventController.calculateGiftEventNameAndGiftAmount())
         outputView.outputTotalBenefitAmount(eventController.calculateTotalDiscountAmount(), eventController.calculateTotalGiftAmount())
+        outputView.outputTotalPriceAfterDiscount(menus.calculateTotalPrice(), eventController.calculateTotalDiscountAmount())
     }
 
     private fun printPreviewEventInfo(visitDate: Int) = outputView.outputPreviewEventInfo(visitDate)
