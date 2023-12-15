@@ -19,6 +19,6 @@ class RewardEventBadge(visitDate: VisitDate, menus: OrderMenus, totalDiscountAmo
     }
 
     companion object {
-        const val BADGE_EVENT = "배지 이벤트"
+        const val EVENT_NAME = "배지 이벤트"
     }
 }

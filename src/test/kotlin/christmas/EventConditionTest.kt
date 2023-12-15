@@ -4,6 +4,7 @@ import christmas.model.eventCondition.EventConditionDay
 import christmas.model.eventCondition.EventConditionPeriod
 import christmas.model.eventCondition.EventConditionPrice
 import christmas.model.order.Menu
+import christmas.model.order.MenuCategory
 import christmas.model.order.OrderMenus
 import christmas.model.order.VisitDate
 import org.junit.jupiter.api.Assertions
@@ -19,7 +20,7 @@ class EventConditionTest {
 
     @Test
     fun `12만원을 넘으면 조건을 만족한다`() {
-        val result = EventConditionPrice(visitDate, menusOver120000, null, 120_000).isSatisfy
+        val result = EventConditionPrice(visitDate, menusOver120000, MenuCategory.NONE, 120_000).isSatisfy
         Assertions.assertEquals(true, result)
     }
 

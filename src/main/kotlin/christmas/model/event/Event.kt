@@ -4,6 +4,7 @@ import christmas.model.eventCondition.EventCondition
 import christmas.model.eventCondition.EventConditionPeriod
 import christmas.model.eventCondition.EventConditionPrice
 import christmas.model.order.Menu
+import christmas.model.order.MenuCategory
 import christmas.model.order.OrderMenus
 import christmas.model.order.VisitDate
 import java.time.LocalDate
@@ -16,7 +17,7 @@ abstract class Event(val visitDate: VisitDate, val menus: OrderMenus) {
     open val eventCategory: EventCategory = EventCategory.DEFAULT
     open val eventName: String = EVENT_NAME
     open val essentialConditions: List<EventCondition> = listOf(
-        EventConditionPrice(visitDate, menus, null, MIN_PRICE),
+        EventConditionPrice(visitDate, menus, MenuCategory.NONE, MIN_PRICE),
         EventConditionPeriod(visitDate, menus, LocalDate.of(2023, 12, 1), LocalDate.of(2023, 12, 31))
     )
     open val optionalConditions: List<EventCondition> = listOf()

@@ -14,4 +14,7 @@ object Strings {
     const val OUTPUT_TOTAL_BENEFIT_AMOUNT = "<총혜택 금액>"
     const val OUTPUT_TOTAL_PRICE_AFTER_DISCOUNT = "<할인 후 예상 결제 금액>"
     const val OUTPUT_EVENT_BADGE = "<%d월 이벤트 배지>"
+
+    const val OUTPUT_MENU_UNIT = "개"
+    const val OUTPUT_NONE = "없음"
 }

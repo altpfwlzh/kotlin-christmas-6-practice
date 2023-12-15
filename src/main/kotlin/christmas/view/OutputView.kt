@@ -2,6 +2,7 @@ package christmas.view
 
 import christmas.constants.ErrorMessage
 import christmas.constants.Strings
+import christmas.model.order.Menu
 import java.time.LocalDate
 import christmas.util.Parser
 
@@ -24,7 +25,7 @@ class OutputView() {
         outputBlankLine()
         println(strings.OUTPUT_ORDER_MENUS)
         menusDetail.map {
-            println("${it.key} ${it.value}개")
+            println("${it.key} ${it.value}${strings.OUTPUT_MENU_UNIT}")
         }
     }
 
@@ -34,7 +35,14 @@ class OutputView() {
         println(Parser().longToCashString(price.toLong()))
     }
 
-    fun outputGiftMenu() = println(strings.OUTPUT_GIFT_MENU)
+    fun outputGiftMenu(giftDetails: Map<Menu, Int>) {
+        outputBlankLine()
+        println(strings.OUTPUT_GIFT_MENU)
+        if(giftDetails.isEmpty()) return println(strings.OUTPUT_NONE)
+        giftDetails.map {
+            println("${it.key.string} ${it.value}${strings.OUTPUT_MENU_UNIT}")
+        }
+    }
 
     fun outputBenefitDetail() = println(strings.OUTPUT_BENEFIT_DETAIL)
 

@@ -20,7 +20,7 @@ class EventPlannerController(
         val orderMenus: OrderMenus = exceptionHandler.inputUntilSuccess { receiveOrderMenus() }
 
         printUserOrder(visitDate, orderMenus)
-
+        printEventInfo(visitDate, orderMenus)
     }
 
     private fun printHello() {
@@ -42,6 +42,12 @@ class EventPlannerController(
 
         printOrderMenus(orderMenus)
         printTotalPriceBeforeDiscount(orderMenus)
+    }
+
+    private fun printEventInfo(visitDate: VisitDate, menus: OrderMenus) {
+        val eventController = EventController(visitDate, menus)
+
+        outputView.outputGiftMenu(eventController.calculateGiftDetails())
     }
 
     private fun printPreviewEventInfo(visitDate: Int) = outputView.outputPreviewEventInfo(visitDate)

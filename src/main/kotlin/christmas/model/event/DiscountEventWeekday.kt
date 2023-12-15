@@ -7,7 +7,7 @@ import christmas.model.order.OrderMenus
 import christmas.model.order.VisitDate
 import java.time.DayOfWeek
 
-class DiscountEventWeekDay(visitDate: VisitDate, menus: OrderMenus) : DiscountEvent(visitDate, menus) {
+class DiscountEventWeekday(visitDate: VisitDate, menus: OrderMenus) : DiscountEvent(visitDate, menus) {
     override val eventName: String = EVENT_NAME
     override val essentialConditions: List<EventCondition> = listOf(
         EventConditionDay(
