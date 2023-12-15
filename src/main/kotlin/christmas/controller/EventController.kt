@@ -58,7 +58,4 @@ class EventController(visitDate: VisitDate, menus: OrderMenus) {
         return giftDetails
     }
 
-
-
-
 }
