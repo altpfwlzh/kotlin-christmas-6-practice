@@ -55,20 +55,20 @@ class OutputView() {
         }
     }
 
-    fun outputTotalBenefitAmount(discountDetails: Map<String, Int>, giftDetails: Map<String, Int>) {
+    fun outputTotalBenefitAmount(discountAmount: Int, giftAmount: Int) {
         outputBlankLine()
         println(strings.OUTPUT_TOTAL_BENEFIT_AMOUNT)
 
-        val benefitDetails: Map<String, Int> = discountDetails + giftDetails
-        var totalAmount: Int = 0
-        if(benefitDetails.isEmpty()) return println("${strings.OUTPUT_ZERO}${strings.OUTPUT_PRICE_UNIT}")
-        benefitDetails.map {
-            totalAmount += it.value
-        }
+        val totalAmount: Int = discountAmount + giftAmount
+        if(totalAmount == 0) return println("${strings.OUTPUT_ZERO}${strings.OUTPUT_PRICE_UNIT}")
         println(Parser().longToMinusCashString(totalAmount.toLong()))
     }
 
-    fun outputTotalPriceAfterDiscount() = println(strings.OUTPUT_TOTAL_PRICE_AFTER_DISCOUNT)
+    fun outputTotalPriceAfterDiscount() {
+        outputBlankLine()
+        println(strings.OUTPUT_TOTAL_PRICE_AFTER_DISCOUNT)
+
+    }
 
     fun outputEventBadge() = println(strings.OUTPUT_EVENT_BADGE)
 

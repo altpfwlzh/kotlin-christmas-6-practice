@@ -58,4 +58,22 @@ class EventController(visitDate: VisitDate, menus: OrderMenus) {
         return giftDetails
     }
 
+    fun calculateTotalDiscountAmount(): Int {
+        var totalDiscountAmount: Int = 0
+        satisfyDiscountEvents.map {
+            totalDiscountAmount += it.discountMenuCategoryAndAmount.values.first()
+        }
+
+        return totalDiscountAmount
+    }
+
+    fun calculateTotalGiftAmount(): Int {
+        var totalDiscountAmount: Int = 0
+        satisfyGiftEvents.map {
+            totalDiscountAmount += it.giftMenuAndCount.keys.first().price
+        }
+
+        return totalDiscountAmount
+    }
+
 }
