@@ -31,10 +31,28 @@ class EventController(visitDate: VisitDate, menus: OrderMenus) {
     private fun calculateSatisfyDiscountEvent(): List<DiscountEvent> = discountEvents.filter { it.isSatisfy }
     private fun calculateSatisfyRewardEvent(): List<RewardEvent> = rewardEvents.filter { it.isSatisfy }
 
-    fun calculateGiftDetails(): Map<Menu, Int> {
+    fun calculateGiftMenuAndCount(): Map<Menu, Int> {
         val giftDetails: MutableMap<Menu, Int> = mutableMapOf()
         satisfyGiftEvents.map {
             giftDetails += it.giftMenuAndCount
+        }
+
+        return giftDetails
+    }
+
+    fun calculateDiscountEventNameAndDiscountAmount(): Map<String, Int> {
+        val discountDetails: MutableMap<String, Int> = mutableMapOf()
+        satisfyDiscountEvents.map {
+            discountDetails[it.eventName] = it.discountMenuCategoryAndAmount.values.first()
+        }
+
+        return discountDetails
+    }
+
+    fun calculateGiftEventNameAndGiftAmount(): Map<String, Int> {
+        val giftDetails: MutableMap<String, Int> = mutableMapOf()
+        satisfyGiftEvents.map {
+            giftDetails[it.eventName] = it.giftMenuAndCount.keys.first().price
         }
 
         return giftDetails

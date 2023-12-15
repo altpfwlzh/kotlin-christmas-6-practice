@@ -47,7 +47,8 @@ class EventPlannerController(
     private fun printEventInfo(visitDate: VisitDate, menus: OrderMenus) {
         val eventController = EventController(visitDate, menus)
 
-        outputView.outputGiftMenu(eventController.calculateGiftDetails())
+        outputView.outputGiftMenu(eventController.calculateGiftMenuAndCount())
+        outputView.outputBenefitDetail(eventController.calculateDiscountEventNameAndDiscountAmount(), eventController.calculateGiftEventNameAndGiftAmount())
     }
 
     private fun printPreviewEventInfo(visitDate: Int) = outputView.outputPreviewEventInfo(visitDate)
