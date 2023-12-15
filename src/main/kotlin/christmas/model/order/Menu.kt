@@ -9,7 +9,7 @@ enum class MenuCategory(val string: String) {
 }
 
 enum class Menu(val menuCategory: MenuCategory, val string: String, val price: Int) {
-    //DEFAULT
+    //NONE
     NONE(MenuCategory.NONE, "없음", 0),
 
     // Appetizer

@@ -5,11 +5,11 @@ import christmas.model.order.VisitDate
 import java.time.DayOfWeek
 import java.time.LocalDate
 
-class EventConditionDay(visitDate: VisitDate, menus: OrderMenus, private val days: List<DayOfWeek>)
+class EventConditionDay(visitDate: VisitDate, menus: OrderMenus, days: List<DayOfWeek>)
     : EventCondition(visitDate, menus) {
-    override val isSatisfy: Boolean = isDateWithinDays()
+    override val isSatisfy: Boolean = isDateWithinDays(days)
 
-    private fun isDateWithinDays(): Boolean
+    private fun isDateWithinDays(days: List<DayOfWeek>): Boolean
         = days.contains(LocalDate.of(visitDate.year, visitDate.month, visitDate.date).dayOfWeek)
 
 }

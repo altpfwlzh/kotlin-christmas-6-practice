@@ -44,6 +44,18 @@ class OrderMenus(private val menus: Map<Menu, Int> ) {
         return totalPrice
     }
 
+    fun calculateMenuCategoryCount(menuCategory: MenuCategory): Int {
+        var totalCount: Int = 0
+
+        menus.filter {
+            it.key.menuCategory == menuCategory
+        }.map {
+            totalCount += it.value
+        }
+
+        return totalCount
+    }
+
     companion object {
         const val INVALID_MENU = "메뉴판에 없는 메뉴를 입력했습니다."
     }
